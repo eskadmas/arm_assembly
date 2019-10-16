@@ -1,0 +1,2 @@
+Dependencies for Project 'Q2', Target 'Target 1': (DO NOT MODIFY !)
+F (.\Q2.s)(0x5AC71AF1)(--cpu ARM7TDMI --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Keil\ARM\RV31\INC-I C:\Keil\ARM\CMSIS\Include-I C:\Keil\ARM\Inc\Philips--list .\q2.lst --xref -o .\q2.o --depend .\q2.d)

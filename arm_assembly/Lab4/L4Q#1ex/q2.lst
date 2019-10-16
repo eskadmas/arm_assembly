@@ -1,0 +1,490 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; THE SOLUTION OF LAB 4 - BUBBLE SORT
+    2 00000000         
+    3 00000000                 AREA             MyData, DATA, READWRITE
+    4 00000000         
+    5 00000000 00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+
+
+
+ARM Macro Assembler    Page 3 
+
+
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00 00 00 
+              00       ORDERED_TABLE
+                               SPACE            400         ; A suitable block 
+                                                            of memory in data a
+                                                            rea
+    6 00000190         
+    7 00000190                 AREA             MyCode, CODE, READONLY
+    8 00000000         
+    9 00000000                 ENTRY
+   10 00000000         
+   11 00000000         START
+   12 00000000 EB00003E        BL               MAIN
+   13 00000004         
+   14 00000004         STOP
+   15 00000004 E3A0B018        MOV              R11, #0x18  ; angel_SWIreason_R
+                                                            eportException
+   16 00000008 E59FC1AC        LDR              R12, =0x20026 ; ADP_Stopped_App
+                                                            licationExit
+   17 0000000C EF123456        SVC              #0x123456   ; ARM semihosting (
+                                                            formerly SWI)
+   18 00000010         
+   19 00000010         Price_list
+   20 00000010         
+   21 00000010 00000010 
+              00000008 
+              00000007 
+              0000000A 
+              00000006 
+              0000000F 
+              00000047 
+              00000007 
+              0000000A 
+              00000005         DCD              0x010, 8, 0x007, 10, 0x006, 15,
+ 0x047, 7, 0x00A, 5 
+                                                            ; These values are 
+                                                            stored in memory an
+                                                            d they can be addre
+                                                            ssed 
+   22 00000038 00000012 
+              00000007 
+              00000016 
+
+
+
+ARM Macro Assembler    Page 4 
+
+
+              00000016 
+              00000017 
+              00000011 
+              00000018 
+              00000026 
+              0000001A 
+              00000016         DCD              0x012, 7, 0x016, 22, 0x017, 17,
+ 0x018, 38, 0x01A, 22 
+                                                            ; with the label va
+                                                            lue «Price_list» 
+   23 00000060 0000001B 
+              00000022 
+              0000001E 
+              0000000B 
+              00000022 
+              00000003 
+              00000023 
+              00000009 
+              00000025 
+              00000028         DCD              0x01B, 34, 0x01E, 11, 0x022, 3,
+ 0x023, 9, 0x025, 40
+   24 00000088 00000027 
+              0000000C 
+              00000028 
+              0000000B 
+              0000002C 
+              0000002D 
+              0000002D 
+              0000000A 
+              00000031 
+              00000028         DCD              0x027, 12, 0x028, 11, 0x02C, 45
+, 0x02D, 10, 0x031, 40
+   25 000000B0 00000033 
+              0000002D 
+              00000035 
+              00000009 
+              00000036 
+              0000000B 
+              00000039 
+              0000000C 
+              0000003C 
+              00000013         DCD              0x033, 45, 0x035, 9, 0x036, 11,
+ 0x039, 12, 0x03C, 19
+   26 000000D8 0000003E 
+              00000001 
+              00000041 
+              00000014 
+              00000042 
+              0000001E 
+              00000045 
+              0000000C 
+              00000004 
+              00000014         DCD              0x03E, 1, 0x041, 20, 0x042, 30,
+ 0x045, 12, 0x004, 20
+   27 00000100         
+   28 00000100         MAIN
+   29 00000100         
+   30 00000100 E59F00B8        LDR              R0, =Price_list ; Load an addre
+                                                            ss of the 1st eleme
+
+
+
+ARM Macro Assembler    Page 5 
+
+
+                                                            nt in Price_list ta
+                                                            ble into - R0
+   31 00000104 E59F10B8        LDR              R1, =ORDERED_TABLE ; Load the 1
+                                                            st address of memor
+                                                            y block result
+   32 00000108 E3A0201D        MOV              R2, #29     ; There are 30 item
+                                                            s. So, we have 29 c
+                                                            onsecutive pairs of
+                                                             them. So, pairs = 
+                                                            29
+   33 0000010C E3A0301F        MOV              R3, #31
+   34 00000110         
+   35 00000110         Price_order
+   36 00000110         
+   37 00000110 E2433001        SUB              R3, R3, #1  ; The number of ele
+                                                            ments compared in t
+                                                            he inner loop
+   38 00000114 E3A04000        MOV              R4, #0      ; R4 is a counter (
+                                                            like j in the C pro
+                                                            gram)
+   39 00000118         
+   40 00000118 E7905184        LDR              R5, [R0, R4, LSL #3] ; Loads th
+                                                            e 1st element to R5
+                                                            
+   41 0000011C E1A06084        MOV              R6, R4, LSL #1
+   42 00000120 E2866001        ADD              R6, R6, #1
+   43 00000124 E7907106        LDR              R7, [R0, R6, LSL #2] ; Loads th
+                                                            e price of the 1st 
+                                                            element to R7
+   44 00000128 E2844001        ADD              R4, R4, #1
+   45 0000012C         
+   46 0000012C         Inner_loop
+   47 0000012C         
+   48 0000012C E7908184        LDR              R8, [R0, R4, LSL #3] ; Loads th
+                                                            e 2nd element to R8
+                                                            
+   49 00000130 E1A09084        MOV              R9, R4, LSL #1
+   50 00000134 E2899001        ADD              R9, R9, #1
+   51 00000138 E790A109        LDR              R10, [R0, R9, LSL #2] ; Loads t
+                                                            he price of the 2nd
+                                                             element to R10
+   52 0000013C         
+   53 0000013C E1550008        CMP              R5, R8
+   54 00000140 8A00000D        BHI              Label
+   55 00000144         
+   56 00000144         ; Store R5, R7, R8, and R10 to the consecutive memory ad
+                       dresses 
+   57 00000144         
+   58 00000144 E2444001        SUB              R4, R4, #1
+   59 00000148 E7815184        STR              R5, [R1, R4, LSL #3] ; Stores t
+                                                            he 1st element(i.e.
+                                                             R5) on the 1st add
+                                                            ress in result
+   60 0000014C E1A06084        MOV              R6, R4, LSL #1
+   61 00000150 E2866001        ADD              R6, R6, #1
+   62 00000154 E7817106        STR              R7, [R1, R6, LSL #2] ; Stores t
+                                                            he price of the 1st
+                                                             element next to it
+                                                             
+
+
+
+ARM Macro Assembler    Page 6 
+
+
+   63 00000158 E2844001        ADD              R4, R4, #1
+   64 0000015C E7818184        STR              R8, [R1, R4, LSL #3] ; Stores t
+                                                            he 2nd element(i.e.
+                                                             R8) on result
+   65 00000160 E1A09084        MOV              R9, R4, LSL #1
+   66 00000164 E2899001        ADD              R9, R9, #1
+   67 00000168 E781A109        STR              R10, [R1, R9, LSL #2]
+   68 0000016C E2866001        ADD              R6, R6, #1
+   69 00000170         
+   70 00000170 E1A05008        MOV              R5, R8
+   71 00000174 E1A0700A        MOV              R7, R10
+   72 00000178 EA000006        B                Next
+   73 0000017C         
+   74 0000017C         Label
+   75 0000017C         
+   76 0000017C E7815184        STR              R5, [R1, R4, LSL #3] ; Stores t
+                                                            he 1st element(i.e.
+                                                             R5) on the 2nd add
+                                                            ress
+   77 00000180 E7817109        STR              R7, [R1, R9, LSL #2]
+   78 00000184 E2444001        SUB              R4, R4, #1
+   79 00000188 E7818184        STR              R8, [R1, R4, LSL #3] ; Stores t
+                                                            he 2nd element(i.e.
+                                                             R8) on the 1st add
+                                                            ress
+   80 0000018C E781A106        STR              R10, [R1, R6, LSL #2]
+   81 00000190 E2844001        ADD              R4, R4, #1
+   82 00000194 E2866001        ADD              R6, R6, #1
+   83 00000198         
+   84 00000198         Next
+   85 00000198 E2866001        ADD              R6, R6, #1
+   86 0000019C E2844001        ADD              R4, R4, #1
+   87 000001A0 E1540003        CMP              R4, R3
+   88 000001A4 3AFFFFE0        BLO              Inner_loop
+   89 000001A8         
+   90 000001A8 E2422001        SUB              R2, R2, #1
+   91 000001AC E59F0010        LDR              R0, =ORDERED_TABLE
+   92 000001B0 E3520000        CMP              R2, #0
+   93 000001B4 8AFFFFD5        BHI              Price_order
+   94 000001B8         
+   95 000001B8 E12FFF1E        BX               LR
+   96 000001BC         
+   97 000001BC                 END
+              00020026 
+              00000000 
+              00000000 
+Command Line: --debug --xref --apcs=interwork --depend=.\q2.d -o.\q2.o -IC:\Kei
+l\ARM\RV31\INC -IC:\Keil\ARM\CMSIS\Include -IC:\Keil\ARM\Inc\Philips --predefin
+e="__EVAL SETA 1" --list=.\q2.lst Q2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MyData 00000000
+
+Symbol: MyData
+   Definitions
+      At line 3 in file Q2.s
+   Uses
+      None
+Comment: MyData unused
+ORDERED_TABLE 00000000
+
+Symbol: ORDERED_TABLE
+   Definitions
+      At line 5 in file Q2.s
+   Uses
+      At line 31 in file Q2.s
+      At line 91 in file Q2.s
+
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Inner_loop 0000012C
+
+Symbol: Inner_loop
+   Definitions
+      At line 46 in file Q2.s
+   Uses
+      At line 88 in file Q2.s
+Comment: Inner_loop used once
+Label 0000017C
+
+Symbol: Label
+   Definitions
+      At line 74 in file Q2.s
+   Uses
+      At line 54 in file Q2.s
+Comment: Label used once
+MAIN 00000100
+
+Symbol: MAIN
+   Definitions
+      At line 28 in file Q2.s
+   Uses
+      At line 12 in file Q2.s
+Comment: MAIN used once
+MyCode 00000000
+
+Symbol: MyCode
+   Definitions
+      At line 7 in file Q2.s
+   Uses
+      None
+Comment: MyCode unused
+Next 00000198
+
+Symbol: Next
+   Definitions
+      At line 84 in file Q2.s
+   Uses
+      At line 72 in file Q2.s
+Comment: Next used once
+Price_list 00000010
+
+Symbol: Price_list
+   Definitions
+      At line 19 in file Q2.s
+   Uses
+      At line 30 in file Q2.s
+Comment: Price_list used once
+Price_order 00000110
+
+Symbol: Price_order
+   Definitions
+      At line 35 in file Q2.s
+   Uses
+      At line 93 in file Q2.s
+Comment: Price_order used once
+START 00000000
+
+Symbol: START
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 11 in file Q2.s
+   Uses
+      None
+Comment: START unused
+STOP 00000004
+
+Symbol: STOP
+   Definitions
+      At line 14 in file Q2.s
+   Uses
+      None
+Comment: STOP unused
+9 symbols
+344 symbols in table
